@@ -1,0 +1,133 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import FeaturedProducts from '../components/FeaturedProducts.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Cat-Misas - Camisas para Gatos">
+  <Header />
+  <Hero />
+  <FeaturedProducts />
+  
+  <!-- About Section -->
+  <section class="about" id="sobre-nosotros">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <h2 class="section-title">¿Por qué elegir Cat-Misas?</h2>
+          <div class="features">
+            <div class="feature">
+              <div class="feature-icon">🧵</div>
+              <h3>Materiales Premium</h3>
+              <p>Utilizamos solo los mejores materiales, suaves y cómodos para la piel sensible de tu gato.</p>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">✂️</div>
+              <h3>Diseños Únicos</h3>
+              <p>Cada camisa es diseñada pensando en el confort y el estilo, con patrones exclusivos.</p>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">🎯</div>
+              <h3>Tallas Perfectas</h3>
+              <p>Amplia gama de tallas para que tu gato se sienta cómodo y elegante.</p>
+            </div>
+          </div>
+        </div>
+        <div class="about-image">
+          <img 
+            src="https://images.pexels.com/photos/1404819/pexels-photo-1404819.jpeg?auto=compress&cs=tinysrgb&w=600" 
+            alt="Gato feliz con camisa"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .about {
+    padding: 6rem 0;
+    background: var(--light-gray);
+  }
+
+  .about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .section-title {
+    text-align: left;
+    margin-bottom: 2rem;
+  }
+
+  .features {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .feature {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .feature-icon {
+    font-size: 2rem;
+    background: var(--primary-orange);
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .feature h3 {
+    margin: 0 0 0.5rem 0;
+    color: var(--dark-gray);
+    font-size: 1.2rem;
+  }
+
+  .feature p {
+    margin: 0;
+    color: var(--primary-gray);
+    line-height: 1.6;
+  }
+
+  .about-image {
+    position: relative;
+  }
+
+  .about-image img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 768px) {
+    .about-content {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    
+    .section-title {
+      text-align: center;
+    }
+    
+    .feature {
+      text-align: center;
+      flex-direction: column;
+    }
+  }
+</style>

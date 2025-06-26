@@ -1,0 +1,401 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Contacto - Cat-Misas">
+  <Header />
+  
+  <main class="contact-page">
+    <div class="container">
+      <div class="page-header">
+        <h1 class="page-title">Contáctanos</h1>
+        <p class="page-subtitle">¿Tienes alguna pregunta? ¡Estamos aquí para ayudarte!</p>
+      </div>
+
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="info-card">
+            <div class="info-icon">📧</div>
+            <h3>Email</h3>
+            <p>info@cat-misas.com</p>
+            <a href="mailto:info@cat-misas.com" class="contact-link">Enviar Email</a>
+          </div>
+          
+          <div class="info-card">
+            <div class="info-icon">📱</div>
+            <h3>WhatsApp</h3>
+            <p>+57 300 123 4567</p>
+            <a href="https://wa.me/573001234567" class="contact-link" target="_blank">Escribir</a>
+          </div>
+          
+          <div class="info-card">
+            <div class="info-icon">🐦</div>
+            <h3>Twitter</h3>
+            <p>@CatMisas</p>
+            <a href="https://twitter.com/catmisas" class="contact-link" target="_blank">Seguir</a>
+          </div>
+          
+          <div class="info-card">
+            <div class="info-icon">📸</div>
+            <h3>Instagram</h3>
+            <p>@cat_misas_oficial</p>
+            <a href="https://instagram.com/cat_misas_oficial" class="contact-link" target="_blank">Seguir</a>
+          </div>
+        </div>
+
+        <div class="contact-form-section">
+          <h2>Formulario de Contacto</h2>
+          <form class="contact-form" id="contact-form">
+            <div class="form-group">
+              <label for="name">Nombre Completo *</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="phone">Teléfono</label>
+              <input type="tel" id="phone" name="phone">
+            </div>
+            
+            <div class="form-group">
+              <label for="cat-name">Nombre de tu Gato</label>
+              <input type="text" id="cat-name" name="cat-name" placeholder="¿Cómo se llama tu minino?">
+            </div>
+            
+            <div class="form-group">
+              <label for="subject">Asunto *</label>
+              <select id="subject" name="subject" required>
+                <option value="">Selecciona un asunto</option>
+                <option value="producto">Consulta sobre productos</option>
+                <option value="tallas">Información sobre tallas</option>
+                <option value="pedido">Estado de mi pedido</option>
+                <option value="devolucion">Devolución o cambio</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Mensaje *</label>
+              <textarea id="message" name="message" rows="5" required placeholder="Cuéntanos en qué podemos ayudarte..."></textarea>
+            </div>
+            
+            <div class="form-group checkbox-group">
+              <input type="checkbox" id="newsletter" name="newsletter">
+              <label for="newsletter">Quiero recibir información sobre nuevos productos y ofertas especiales</label>
+            </div>
+            
+            <button type="submit" class="btn btn-primary submit-btn">
+              <span class="btn-text">Enviar Mensaje</span>
+              <span class="btn-loading" style="display: none;">Enviando...</span>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="faq-section">
+        <h2 class="section-title">Preguntas Frecuentes</h2>
+        <div class="faq-grid">
+          <div class="faq-item">
+            <h3>¿Cómo sé qué talla elegir?</h3>
+            <p>Proporcionamos una guía detallada de tallas. Mide el contorno del pecho de tu gato y consulta nuestra tabla de medidas.</p>
+          </div>
+          <div class="faq-item">
+            <h3>¿Los materiales son seguros?</h3>
+            <p>Sí, todos nuestros materiales son hipoalergénicos y seguros para mascotas. Están certificados y libres de químicos dañinos.</p>
+          </div>
+          <div class="faq-item">
+            <h3>¿Ofrecen devoluciones?</h3>
+            <p>Sí, aceptamos devoluciones dentro de los primeros 30 días si el producto no ha sido usado y conserva las etiquetas.</p>
+          </div>
+          <div class="faq-item">
+            <h3>¿Cuánto demora el envío?</h3>
+            <p>Los envíos nacionales tardan entre 2-5 días hábiles. Ofrecemos envío gratuito en compras superiores a $80.000.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .contact-page {
+    padding-top: 100px;
+    min-height: 100vh;
+    background: var(--light-gray);
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .page-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--dark-gray);
+    margin-bottom: 1rem;
+  }
+
+  .page-subtitle {
+    font-size: 1.2rem;
+    color: var(--primary-gray);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .contact-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    margin-bottom: 5rem;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .info-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+
+  .info-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .info-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .info-card h3 {
+    font-size: 1.3rem;
+    color: var(--dark-gray);
+    margin-bottom: 0.5rem;
+  }
+
+  .info-card p {
+    color: var(--primary-gray);
+    margin-bottom: 1rem;
+  }
+
+  .contact-link {
+    display: inline-block;
+    color: var(--primary-orange);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .contact-link:hover {
+    color: var(--accent-purple);
+  }
+
+  .contact-form-section {
+    background: white;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .contact-form-section h2 {
+    font-size: 2rem;
+    color: var(--dark-gray);
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-group label {
+    font-weight: 600;
+    color: var(--dark-gray);
+    margin-bottom: 0.5rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 1rem;
+    border: 2px solid #E5E7EB;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-orange);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .checkbox-group {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .checkbox-group input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+  }
+
+  .checkbox-group label {
+    margin: 0;
+    font-weight: 400;
+    font-size: 0.9rem;
+  }
+
+  .submit-btn {
+    margin-top: 1rem;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    position: relative;
+  }
+
+  .btn-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .faq-section {
+    background: white;
+    padding: 4rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .faq-item {
+    padding: 1.5rem;
+    border-left: 4px solid var(--primary-orange);
+    background: var(--light-gray);
+    border-radius: 8px;
+  }
+
+  .faq-item h3 {
+    color: var(--dark-gray);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+
+  .faq-item p {
+    color: var(--primary-gray);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .page-title {
+      font-size: 2.5rem;
+    }
+    
+    .contact-content {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    
+    .contact-form-section {
+      padding: 2rem;
+    }
+    
+    .faq-section {
+      padding: 3rem 1rem;
+    }
+  }
+</style>
+
+<script>
+  // Form submission
+  const contactForm = document.getElementById('contact-form');
+  const submitBtn = contactForm?.querySelector('.submit-btn');
+  const btnText = submitBtn?.querySelector('.btn-text');
+  const btnLoading = submitBtn?.querySelector('.btn-loading');
+
+  contactForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    // Show loading state
+    if (btnText && btnLoading && submitBtn) {
+      btnText.style.display = 'none';
+      btnLoading.style.display = 'inline';
+      submitBtn.disabled = true;
+    }
+
+    // Simulate form submission
+    await new Promise(resolve => setTimeout(resolve, 2000));
+
+    // Show success message
+    const successMessage = document.createElement('div');
+    successMessage.innerHTML = `
+      <div style="
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: var(--success-green);
+        color: white;
+        padding: 2rem;
+        border-radius: 12px;
+        text-align: center;
+        z-index: 10000;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      ">
+        <h3 style="margin: 0 0 1rem 0;">¡Mensaje Enviado! 🎉</h3>
+        <p style="margin: 0;">Te responderemos pronto. ¡Gracias por contactarnos!</p>
+      </div>
+    `;
+    
+    document.body.appendChild(successMessage);
+    
+    // Reset form
+    contactForm.reset();
+    
+    // Reset button state
+    if (btnText && btnLoading && submitBtn) {
+      btnText.style.display = 'inline';
+      btnLoading.style.display = 'none';
+      submitBtn.disabled = false;
+    }
+    
+    // Remove success message after 3 seconds
+    setTimeout(() => {
+      successMessage.remove();
+    }, 3000);
+  });
+</script>

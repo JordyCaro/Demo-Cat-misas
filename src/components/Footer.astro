@@ -1,0 +1,144 @@
+---
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <div class="footer-brand">
+          <h3>🐱 Cat-Misas</h3>
+          <p>Camisas elegantes y cómodas para tu gato favorito. Diseños únicos que combinan estilo y confort.</p>
+        </div>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Enlaces Rápidos</h4>
+        <ul class="footer-links">
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/productos">Productos</a></li>
+          <li><a href="/contacto">Contacto</a></li>
+          <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Categorías</h4>
+        <ul class="footer-links">
+          <li><a href="/productos?categoria=casual">Casual</a></li>
+          <li><a href="/productos?categoria=formal">Formal</a></li>
+          <li><a href="/productos?categoria=deportiva">Deportiva</a></li>
+          <li><a href="/productos?categoria=fiesta">Fiesta</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Síguenos</h4>
+        <div class="social-links">
+          <a href="#" class="social-link">📧 info@cat-misas.com</a>
+          <a href="#" class="social-link">📱 WhatsApp</a>
+          <a href="#" class="social-link">🐦 Twitter</a>
+          <a href="#" class="social-link">📸 Instagram</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2024 Cat-Misas. Todos los derechos reservados.</p>
+      <p>Hecho con ❤️ para los amantes de los gatos</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--dark-gray);
+    color: white;
+    padding: 3rem 0 1rem;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .footer-section h3,
+  .footer-section h4 {
+    margin-bottom: 1rem;
+    color: var(--primary-orange);
+  }
+
+  .footer-section h3 {
+    font-size: 1.5rem;
+  }
+
+  .footer-section h4 {
+    font-size: 1.1rem;
+  }
+
+  .footer-brand p {
+    color: #D1D5DB;
+    line-height: 1.6;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-links a {
+    color: #D1D5DB;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .footer-links a:hover {
+    color: var(--primary-orange);
+  }
+
+  .social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .social-link {
+    color: #D1D5DB;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .social-link:hover {
+    color: var(--primary-orange);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid #4B5563;
+    padding-top: 1rem;
+    text-align: center;
+    color: #9CA3AF;
+  }
+
+  .footer-bottom p {
+    margin: 0.5rem 0;
+  }
+
+  @media (max-width: 768px) {
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .footer-section {
+      text-align: center;
+    }
+    
+    .social-links {
+      align-items: center;
+    }
+  }
+</style>

@@ -1,0 +1,237 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<header class="header">
+  <nav class="nav container">
+    <div class="nav-brand">
+      <a href="/" class="logo">
+        <span class="logo-icon">🐱</span>
+        <span class="logo-text">Cat-Misas</span>
+      </a>
+    </div>
+    
+    <ul class="nav-menu" id="nav-menu">
+      <li class="nav-item">
+        <a href="/" class={`nav-link ${currentPath === '/' ? 'active' : ''}`}>Inicio</a>
+      </li>
+      <li class="nav-item">
+        <a href="/productos" class={`nav-link ${currentPath === '/productos' ? 'active' : ''}`}>Productos</a>
+      </li>
+      <li class="nav-item">
+        <a href="/contacto" class={`nav-link ${currentPath === '/contacto' ? 'active' : ''}`}>Contacto</a>
+      </li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="cart-btn" id="cart-btn">
+        🛒 <span class="cart-count" id="cart-count">0</span>
+      </button>
+      <button class="nav-toggle" id="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<style>
+  .header {
+    background: var(--primary-white);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 20px;
+  }
+
+  .nav-brand .logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-orange);
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+  }
+
+  .nav-link {
+    text-decoration: none;
+    color: var(--dark-gray);
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: var(--primary-orange);
+  }
+
+  .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--primary-orange);
+    border-radius: 1px;
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .cart-btn {
+    background: var(--accent-purple);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .cart-btn:hover {
+    background: #7C3AED;
+    transform: translateY(-2px);
+  }
+
+  .cart-count {
+    background: var(--primary-orange);
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.8rem;
+    margin-left: 0.5rem;
+  }
+
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    gap: 4px;
+  }
+
+  .nav-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--dark-gray);
+    transition: 0.3s;
+  }
+
+  @media (max-width: 768px) {
+    .nav-menu {
+      position: fixed;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      flex-direction: column;
+      padding: 2rem;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      transform: translateY(-100%);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .nav-menu.active {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .nav-toggle {
+      display: flex;
+    }
+
+    .nav-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .nav-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -6px);
+    }
+  }
+</style>
+
+<script>
+  // Mobile menu toggle
+  const navToggle = document.getElementById('nav-toggle');
+  const navMenu = document.getElementById('nav-menu');
+
+  navToggle?.addEventListener('click', () => {
+    navMenu?.classList.toggle('active');
+    navToggle.classList.toggle('active');
+  });
+
+  // Cart functionality
+  let cartCount = 0;
+  const cartCountElement = document.getElementById('cart-count');
+
+  function updateCartCount() {
+    if (cartCountElement) {
+      cartCountElement.textContent = cartCount.toString();
+    }
+  }
+
+  // Make functions available globally
+  (window as any).addToCart = function() {
+    cartCount++;
+    updateCartCount();
+    
+    // Simple notification
+    const notification = document.createElement('div');
+    notification.textContent = '¡Producto añadido al carrito! 🎉';
+    notification.style.cssText = `
+      position: fixed;
+      top: 100px;
+      right: 20px;
+      background: var(--success-green);
+      color: white;
+      padding: 15px 20px;
+      border-radius: 8px;
+      z-index: 10000;
+      animation: slideIn 0.3s ease;
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+      notification.remove();
+    }, 3000);
+  };
+</script>

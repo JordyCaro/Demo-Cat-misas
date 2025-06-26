@@ -1,0 +1,215 @@
+---
+const featuredProducts = [
+  {
+    id: 1,
+    name: "Camisa Elegante Azul",
+    price: 45000,
+    image: "https://images.pexels.com/photos/1404819/pexels-photo-1404819.jpeg?auto=compress&cs=tinysrgb&w=400",
+    category: "Formal",
+    rating: 5,
+    description: "Perfecta para ocasiones especiales"
+  },
+  {
+    id: 2,
+    name: "Camisa Casual Rayas",
+    price: 35000,
+    image: "https://images.pexels.com/photos/2071873/pexels-photo-2071873.jpeg?auto=compress&cs=tinysrgb&w=400",
+    category: "Casual",
+    rating: 4,
+    description: "Cómoda para el día a día"
+  },
+  {
+    id: 3,
+    name: "Camisa Deportiva Verde",
+    price: 40000,
+    image: "https://images.pexels.com/photos/1741205/pexels-photo-1741205.jpeg?auto=compress&cs=tinysrgb&w=400",
+    category: "Deportiva",
+    rating: 5,
+    description: "Ideal para gatos activos"
+  },
+  {
+    id: 4,
+    name: "Camisa de Fiesta Dorada",
+    price: 55000,
+    image: "https://images.pexels.com/photos/1643456/pexels-photo-1643456.jpeg?auto=compress&cs=tinysrgb&w=400",
+    category: "Fiesta",
+    rating: 5,
+    description: "Brilla en cada celebración"
+  }
+];
+
+function formatPrice(price: number): string {
+  return new Intl.NumberFormat('es-CO', {
+    style: 'currency',
+    currency: 'COP',
+    minimumFractionDigits: 0
+  }).format(price);
+}
+---
+
+<section class="featured" id="featured">
+  <div class="container">
+    <h2 class="section-title">Productos Destacados</h2>
+    <p class="section-subtitle">
+      Descubre nuestras camisas más populares, diseñadas especialmente para el confort y estilo de tu gato
+    </p>
+    
+    <div class="products-grid">
+      {featuredProducts.map(product => (
+        <div class="product-card">
+          <div class="product-image">
+            <img src={product.image} alt={product.name} />
+            <div class="product-badge">{product.category}</div>
+            <div class="product-overlay">
+              <button class="btn btn-primary" onclick="addToCart()">
+                Añadir al Carrito
+              </button>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-rating">
+              {Array.from({length: 5}, (_, i) => (
+                <span class={`star ${i < product.rating ? 'filled' : ''}`}>⭐</span>
+              ))}
+            </div>
+            <h3 class="product-name">{product.name}</h3>
+            <p class="product-description">{product.description}</p>
+            <div class="product-price">{formatPrice(product.price)}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <div class="featured-cta">
+      <a href="/productos" class="btn btn-secondary">Ver Todos los Productos</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .featured {
+    padding: 6rem 0;
+    background: var(--primary-white);
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .product-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .product-image {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+  }
+
+  .product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .product-card:hover .product-image img {
+    transform: scale(1.05);
+  }
+
+  .product-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: var(--accent-purple);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .product-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .product-card:hover .product-overlay {
+    opacity: 1;
+  }
+
+  .product-info {
+    padding: 1.5rem;
+  }
+
+  .product-rating {
+    display: flex;
+    gap: 0.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .star {
+    font-size: 1rem;
+    opacity: 0.3;
+  }
+
+  .star.filled {
+    opacity: 1;
+  }
+
+  .product-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--dark-gray);
+    margin-bottom: 0.5rem;
+  }
+
+  .product-description {
+    color: var(--primary-gray);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .product-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-orange);
+  }
+
+  .featured-cta {
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .products-grid {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .product-card {
+      margin: 0 10px;
+    }
+  }
+</style>
