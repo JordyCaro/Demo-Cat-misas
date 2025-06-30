@@ -6,7 +6,7 @@ const currentPath = Astro.url.pathname;
   <nav class="nav container">
     <div class="nav-brand">
       <a href="/" class="logo">
-        <span class="logo-icon">🐱</span>
+        <img src="/logo.PNG" alt="Cat-Misas Logo" class="logo-icon">
         <span class="logo-text">Cat-Misas</span>
       </a>
     </div>
@@ -65,9 +65,11 @@ const currentPath = Astro.url.pathname;
   }
 
   .logo-icon {
-    font-size: 2rem;
-    margin-right: 0.5rem;
-  }
+  width: 5rem;
+  height: 5rem;
+  object-fit: contain;
+  margin-right: 0.5rem;
+}
 
   .nav-menu {
     display: flex;
